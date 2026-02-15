@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'game/fruit_cathcer_game.dart';
+import 'package:flame/game.dart';
+
 
 
 void main() {
@@ -26,49 +29,71 @@ class GameScreenState extends State<GameScreen> {
   void initState() {
   super.initState();
   }
-  @override
-  Widget build(BuildContext context){
+ @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body : Stack(
+      body: Column(
         children: [
-          Positioned(
-            top: 50,
-            left: 20,
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.black54,
-                borderRadius: BorderRadius.circular(10),
-              ),
-
-              child:  ValueListenableBuilder<int>(
-              valueListenable: counter,
-              builder: (context, score, child){
-                return Text(
-                  'Score: $score',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+          Expanded(
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 50,
+                  left: 20,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ValueListenableBuilder<int>(
+                      valueListenable: counter,
+                      builder: (context, score, child) {
+                        return Text(
+                          'Score: $score',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                );
-              },
-              ),
-            )
+                ),
+
+                Positioned(
+                  top: 50,
+                  right: 20,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.music_note, color: Colors.black),
+                        onPressed: () {},
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.volume_up, color: Colors.black),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
 
-          //untuk gambar icon
-          Positioned(
-            top: 50,
-            right: 20,
-            child: Row(
-              children: [IconButton(icon: const Icon(Icons.music_note, color: Colors.black,),onPressed: ()   {},),
-              IconButton(icon: const Icon(Icons.volume_up, color: Colors.black,),onPressed: ()   {},),
-              ],
-            ))
-        
+          // ✅ BUTTON DI LUAR STACK
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: ElevatedButton(
+              onPressed: () {
+                counter.value++;
+              },
+              child: const Text("Tambah Score"),
+            ),
+          ),
         ],
-      )
+      ),
     );
   }
 
