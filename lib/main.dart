@@ -10,14 +10,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Catcher Game',
-      home : const GameScreen(),
+      home : GameScreen(),
     );
   }
 }
 
 class GameScreen extends StatefulWidget {
-  const GameScreen({super.key});
-
  @override
  State<GameScreen> createState() => GameScreenState();}
 
