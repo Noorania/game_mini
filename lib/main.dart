@@ -33,7 +33,16 @@ class GameScreenState extends State<GameScreen> {
   {
   super.initState();
   game = FruitCatcherGame();
+
+  AudioManager().playBackgroundMusic();
   }
+
+  @override
+  void dispose(){
+    game.onRemove();
+    super.dispose();
+  }
+  
 
   final ValueNotifier<int> counter = ValueNotifier(0);
   @override
