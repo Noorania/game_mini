@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:game_mini/game/managers/audio_manager.dart';
 import 'game/fruit_cathcer_game.dart';
 import 'package:flame/game.dart';
 
 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //Initialize audio
+  await AudioManager().initialize();
   runApp( MyApp());
 }
 
@@ -69,8 +73,8 @@ class GameScreenState extends State<GameScreen> {
             top: 50,
             right: 20,
             child: Row(
-              children: [IconButton(icon: const Icon(Icons.music_note, color: Colors.black,),onPressed: ()   {},),
-              IconButton(icon: const Icon(Icons.volume_up, color: Colors.black,),onPressed: ()   {},),
+              children: [IconButton(icon: const Icon(Icons.music_note, color: Colors.black,),onPressed: ()   {AudioManager().toggleMusic();},),
+              IconButton(icon: const Icon(Icons.volume_up, color: Colors.black,),onPressed: ()   {AudioManager().toggleSfx();},),
               ],
             )
             ),
