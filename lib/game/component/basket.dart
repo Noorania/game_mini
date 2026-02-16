@@ -19,7 +19,8 @@ Basket() : super(size: Vector2(80, 60));
     ..style = PaintingStyle.fill;
   
   //draw basket
-  final rect = RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, size.x, size.y),
+  final rect = RRect.fromRectAndRadius(
+    Rect.fromLTWH(0, 0, size.x, size.y),
   const Radius.circular(10),
   );
   

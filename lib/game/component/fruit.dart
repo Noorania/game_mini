@@ -35,7 +35,7 @@ class Fruit extends PositionComponent with HasGameRef<FruitCatcherGame>, Collisi
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
   super.onCollision(intersectionPoints, other);
   if (other is Basket) {
-  // gameRef.incrementScore();
+  gameRef.incrementScore();
   removeFromParent();
     }
   }

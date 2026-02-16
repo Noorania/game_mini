@@ -23,8 +23,10 @@ class MyApp extends StatelessWidget {
 }
 
 class GameScreen extends StatefulWidget {
+  const GameScreen({super.key});
  @override
- State<GameScreen> createState() => GameScreenState();}
+ State<GameScreen> createState() => GameScreenState();
+ }
 
 class GameScreenState extends State<GameScreen> {
   late FruitCatcherGame game; 
@@ -33,8 +35,6 @@ class GameScreenState extends State<GameScreen> {
   {
   super.initState();
   game = FruitCatcherGame();
-
-  AudioManager().playBackgroundMusic();
   }
 
   @override
@@ -44,7 +44,6 @@ class GameScreenState extends State<GameScreen> {
   }
   
 
-  final ValueNotifier<int> counter = ValueNotifier(0);
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -62,7 +61,7 @@ class GameScreenState extends State<GameScreen> {
               ),
 
               child:  ValueListenableBuilder<int>(
-              valueListenable: counter,
+              valueListenable: game.scoreNotifier,
               builder: (context, score, child){
                 return Text(
                   'Score: $score',
